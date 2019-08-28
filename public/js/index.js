@@ -6,12 +6,10 @@ $(document).ready(function(){
         dataType: "text",
         success: function(response) {
             data = $.csv.toArrays(response);
-            console.log(data);
             var shifted = data.shift();
-            console.log(data);
             var sorted = data.sort(sortLast);
             //ALWAYS PASS SHIFTED DATA
-            console.log(data);
+            console.log(sorted);
             $('#xml').on('click',function(){
                 createXML(sorted,shifted);
             });
@@ -38,11 +36,17 @@ $(document).ready(function(){
     }
     
     function createJSON(arr,shifted) {
+        var passedData = [];
         var parsed = [];
-        for (i=0; i < arr.length;i++){
+        var i = -1;
+        while(++i < data.length){
+            passedData[i] = arr[i];
+        }
+        console.log(passedData);
+        for (i=0; i < passedData.length;i++){
             parsed[i] = {};
             for(u=0;u < shifted.length;u++){
-                parsed[i][`${shifted[u]}`]=arr[i][u];
+                parsed[i][`${shifted[u]}`]=passedData[i][u];
                 //console.log(arr[i]);
             }
         }
@@ -81,8 +85,14 @@ $(document).ready(function(){
     
     function createCSV(arr,shifted) {
         var csv = "data:text/csv;charset=utf-8,";
-        arr.unshift(shifted);
-        arr.forEach(function(rowArray){
+        var passedData = [];
+        var i = -1;
+        while(++i < data.length){
+            passedData[i] = data[i];
+        }
+        console.log(passedData);
+        passedData.unshift(shifted);
+        passedData.forEach(function(rowArray){
             var row = rowArray.join(",");
             csv += row + "\r\n";
         });
@@ -95,14 +105,23 @@ $(document).ready(function(){
     }
 
     function generateHtmlTable(data,shifted) {
-        data.unshift(shifted);
-        console.log(data.length);
+        var passedData = [];
+        var i = -1;
+        while(++i < data.length){
+            passedData[i] = data[i];
+        }
+        var passedData = [];
+        var i = -1;
+        while(++i < data.length){
+            passedData[i] = data[i];
+        }
+        passedData.unshift(shifted);
         var html = '<table id="table" class="table table-condensed table-hover table-striped">';
      
           if(typeof(data[0]) === 'undefined') {
             return null;
           } else {
-            $.each(data, function( index, row ) {
+            $.each(passedData, function( index, row ) {
           //bind header
           if(index == 0) {
             html += '<thead>';
