@@ -1,5 +1,5 @@
 # developer_assessment
 
-##Getting Started
+## Getting Started
 
 Pull this repository and just open the html file.
