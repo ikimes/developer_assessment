@@ -16,3 +16,6 @@ Uses express js and ejs.
   
 2. http://localhost:3000/person/?first=firstName&last=lastName
   will return a json object of that singular person. If no person is found, return error response
+
+### TODO
+Inside of public/js/index.js I originally modified the data from the local csv file as I wasn't sure if I would end up getting the endpoint working. Since I am now using a server, I should be getting the csv from a response rather than loading from the local file but I left it since I ran out of time to work on this. 
