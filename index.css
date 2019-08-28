@@ -1,0 +1,19 @@
+a.button {
+    text-decoration: underline;
+    color: blue !important;
+    display: block;
+    background: #eee;
+    text-align: center;
+    padding: 5px;
+    margin: 10px auto;
+}
+
+a.button:hover {
+    color:#eee !important;
+    background: blue;
+    cursor: pointer
+}
+
+#table {
+    margin: 5px auto;
+}
